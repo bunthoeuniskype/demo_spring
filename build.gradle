@@ -1,0 +1,49 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")		
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+   
+}
+
+group = 'demo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/libs-release" }
+}
+
+
+dependencies {
+	implementation "joda-time:joda-time:2.2"
+	implementation('org.springframework.boot:spring-boot-starter')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+	// JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'	
+	 // Use MySQL Connector-J
+    implementation 'mysql:mysql-connector-java'
+    
+    implementation "org.springframework.data:spring-data-gemfire"
+    implementation "org.projectlombok:lombok"
+    runtime "org.springframework.shell:spring-shell:1.2.0.RELEASE"
+
+}
