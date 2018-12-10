@@ -15,6 +15,12 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+    }
+}
+
 bootJar {
    
 }
@@ -31,19 +37,15 @@ repositories {
 
 
 dependencies {
-	implementation "joda-time:joda-time:2.2"
-	implementation('org.springframework.boot:spring-boot-starter')
-	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
-    compile("org.springframework.boot:spring-boot-devtools")
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation "org.springframework.boot:spring-boot-devtools"
 	// JPA Data (We are going to use Repositories, Entities, Hibernate, etc...)
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'	
 	 // Use MySQL Connector-J
     implementation 'mysql:mysql-connector-java'
-    
-    implementation "org.springframework.data:spring-data-gemfire"
-    implementation "org.projectlombok:lombok"
-    runtime "org.springframework.shell:spring-shell:1.2.0.RELEASE"
+    implementation 'org.projectlombok:lombok'
 
 }
