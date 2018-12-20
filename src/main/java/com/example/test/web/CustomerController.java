@@ -47,6 +47,7 @@ public class CustomerController {
         ModelAndView modelAndView = new ModelAndView();   
         modelAndView.setViewName("srtdash/customer/edit");  
         modelAndView.addObject("customer", customerRepository.findById(itemId));
+        modelAndView.addObject("itemId",itemId);
         return modelAndView;
     }
     
